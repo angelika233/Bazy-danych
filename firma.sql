@@ -1,4 +1,5 @@
 
+
 CREATE DATABASE firma;
 
 CREATE TABLE pracownicy(
@@ -31,14 +32,17 @@ Id_premii INT PRIMARY KEY,
 Rodzaj VARCHAR(50),
 Kwota INT
 );
+ALTER TABLE pensje
+ADD FOREIGN KEY (Id_premii) REFERENCES premie(Id_premii);
+ALTER TABLE godziny
+ADD FOREIGN KEY (Id_pracownika) REFERENCES pracownicy(Id_pracownika);
 
-
-INSERT INTO pracownicy VALUES(1,'Tomasz', 'Nowak', 'Krakow', 5125566512);
+INSERT INTO pracownicy VALUES(1,'Tomasz', 'Nowak', 'Krakow', 512556512);
 INSERT INTO pracownicy VALUES(2,'Jan', 'Kowalski', 'Krakow', 512512412);
 INSERT INTO pracownicy VALUES(3,'Marta', 'Mazur', 'Warszawa', 567512512);
 INSERT INTO pracownicy VALUES(4,'Krzysztof', 'Nowy', 'Wroclaw', 578512512);
-INSERT INTO pracownicy VALUES(5,'Jacek', 'Kot', 'Wroclaw', 5125198762);
-INSERT INTO pracownicy VALUES(6,'Anna', 'Kowalczyk', 'Gdynia', 512342612);
+INSERT INTO pracownicy VALUES(5,'Jacek', 'Kot', 'Wroclaw', 515198762);
+INSERT INTO pracownicy VALUES(6,'Anna', 'Kowalczyk', 'Gdynia', 512326162);
 INSERT INTO pracownicy VALUES(7,'Katarzyna', 'Nowakowska', 'Las', 518782512);
 INSERT INTO pracownicy VALUES(8,'Kamil', 'Górski', 'Katowice', 512519992);
 INSERT INTO pracownicy VALUES(9,'Teresa', 'Szklarz', 'Krakow', 533312512);
@@ -78,7 +82,7 @@ INSERT INTO pensje VALUES(5,'sprzataczka', 2000,9);
 INSERT INTO pensje VALUES(6,'informatyk', 3800,3);
 INSERT INTO pensje VALUES(7,'pomoc projektanta', 3000,3);
 INSERT INTO pensje VALUES(8,'hr', 4000,9);
-INSERT INTO pensje VALUES(8,'szkoleniowiec', 3500,9);
+INSERT INTO pensje VALUES(9,'szkoleniowiec', 3500,9);
 INSERT INTO pensje VALUES(10,'pomoc ksiegowego', 2500,1);
 
 
