@@ -1,5 +1,5 @@
-pg_dump -U postgres -Fc firma > firma_backup.sql
-pg_restore -U postgres -d firma "C:\Program Files\PostgreSQL\12\bin\firma_backup.sql"
+pg_dump -U postgres -Fc firma > firma02.sql
+pg_restore -U postgres -d firma "C:\Program Files\PostgreSQL\12\bin\firma02.sql"
 
 BACKUP DATABASE AdventureWorks2017 TO DISK = 'C:\Users\angel\OneDrive\Pulpit\Studia\Bazy_danych\MS_backup.bak' WITH FORMAT;
 
