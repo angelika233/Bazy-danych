@@ -34,7 +34,7 @@ SET NOCOUNT ON;
  SELECT @after = TaxRate FROM inserted
  SELECT @before = TaxRate FROM deleted
  
- IF ( (@after < @before - 0.3* @before) OR (@after > @before + 0.3* @before))
+ IF ( (@after <  0.7* @before) OR (@after > 1.3* @before))
   BEGIN
      print 'error, the change in tax is greater than 30%'
      ROLLBACK
