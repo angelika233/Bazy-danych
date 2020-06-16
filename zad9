@@ -1,0 +1,43 @@
+CREATE PROCEDURE Fibonacci (@element INT)
+AS 
+DECLARE @fibo INT=0;
+DECLARE @elem1 INT=0;
+DECLARE @elem2 INT=1;
+
+IF @element = 1
+BEGIN
+SET @fibo=0 ;
+END;
+ELSE 
+BEGIN
+	WHILE @element-1 > 1
+	BEGIN
+	 SET @fibo = @elem1 + @elem2;
+	 SET @elem1 = @elem2;
+	 SET @elem2 = @fibo;
+	 SET @element = @element-1;
+	END;
+END;
+SELECT @fibo as ciag;
+RETURN;
+
+CREATE  TRIGGER last ON AdventureWorks2017.Person.Person 
+FOR UPDATE AS
+UPDATE Person SET LastName=upper(LastName)
+
+CREATE TRIGGER taxRateMonitoring ON AdventureWorks2017.Sales.SalesTaxRate
+AFTER UPDATE AS
+BEGIN
+SET NOCOUNT ON;
+ DECLARE @before FLOAT;
+ DECLARE @after FLOAT;
+ SELECT @after = TaxRate FROM inserted
+ SELECT @before = TaxRate FROM deleted
+ 
+ IF ( (@after < @before - 0.3* @before) OR (@after > @before + 0.3* @before))
+  BEGIN
+     print 'error, the change in tax is greater than 30%'
+     ROLLBACK
+     RETURN
+  END;
+ END;
